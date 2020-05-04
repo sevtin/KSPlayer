@@ -58,10 +58,8 @@
 		E609F44324607E9B0047A1F8 /* KSPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				E609F44424607E9B0047A1F8 /* AppDelegate.h */,
-				E609F44524607E9B0047A1F8 /* AppDelegate.m */,
-				E609F44724607E9B0047A1F8 /* ViewController.h */,
-				E609F44824607E9B0047A1F8 /* ViewController.m */,
+				E6260F122460804600694ABA /* Scripts */,
+				E6260F112460803A00694ABA /* Resources */,
 				E609F44A24607E9B0047A1F8 /* Main.storyboard */,
 				E609F44D24607E9C0047A1F8 /* Assets.xcassets */,
 				E609F44F24607E9C0047A1F8 /* LaunchScreen.storyboard */,
@@ -69,6 +67,72 @@
 				E609F45324607E9C0047A1F8 /* main.m */,
 			);
 			path = KSPlayer;
+			sourceTree = "<group>";
+		};
+		E6260F112460803A00694ABA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E6260F122460804600694ABA /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				E6260F152460806400694ABA /* Classes */,
+				E6260F142460805900694ABA /* Custom */,
+				E6260F132460804F00694ABA /* Library */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		E6260F132460804F00694ABA /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		E6260F142460805900694ABA /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		E6260F152460806400694ABA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E6260F162460806E00694ABA /* Main */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		E6260F162460806E00694ABA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E6260F182460807E00694ABA /* Controller */,
+				E6260F172460807600694ABA /* AppDelegate */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E6260F172460807600694ABA /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				E609F44424607E9B0047A1F8 /* AppDelegate.h */,
+				E609F44524607E9B0047A1F8 /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		E6260F182460807E00694ABA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E609F44724607E9B0047A1F8 /* ViewController.h */,
+				E609F44824607E9B0047A1F8 /* ViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -272,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -284,7 +348,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TW8WRSRZ44;
 				INFOPLIST_FILE = KSPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +366,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TW8WRSRZ44;
 				INFOPLIST_FILE = KSPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
