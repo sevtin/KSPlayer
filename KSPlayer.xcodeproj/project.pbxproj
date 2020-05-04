@@ -52,6 +52,7 @@
 		E6260FC0246083B300694ABA /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		E6260FC2246083CF00694ABA /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		E6260FC3246083F900694ABA /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		E6260FC42460856F00694ABA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +237,7 @@
 		E6260FB92460839200694ABA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6260FC42460856F00694ABA /* libz.tbd */,
 				E6260FC3246083F900694ABA /* libiconv.tbd */,
 				E6260FC2246083CF00694ABA /* libbz2.tbd */,
 				E6260FC0246083B300694ABA /* VideoToolbox.framework */,
