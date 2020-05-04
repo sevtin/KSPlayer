@@ -19,6 +19,10 @@
 		E6260F2A2460811500694ABA /* XDXPreviewNV12Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E6260F262460811500694ABA /* XDXPreviewNV12Shader.fsh */; };
 		E6260F2B2460811500694ABA /* XDXPreviewRGBShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E6260F272460811500694ABA /* XDXPreviewRGBShader.fsh */; };
 		E6260F2C2460811500694ABA /* XDXPreviewNV12Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E6260F282460811500694ABA /* XDXPreviewNV12Shader.vsh */; };
+		E6260FBB2460839200694ABA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6260FBA2460839200694ABA /* AudioToolbox.framework */; };
+		E6260FBD2460839A00694ABA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6260FBC2460839A00694ABA /* AVFoundation.framework */; };
+		E6260FBF246083A500694ABA /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6260FBE246083A500694ABA /* CoreMedia.framework */; };
+		E6260FC1246083B300694ABA /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6260FC0246083B300694ABA /* VideoToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,12 @@
 		E6260F272460811500694ABA /* XDXPreviewRGBShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = XDXPreviewRGBShader.fsh; sourceTree = "<group>"; };
 		E6260F282460811500694ABA /* XDXPreviewNV12Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = XDXPreviewNV12Shader.vsh; sourceTree = "<group>"; };
 		E6260F2F2460813700694ABA /* log4cplus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log4cplus.h; sourceTree = "<group>"; };
+		E6260FBA2460839200694ABA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E6260FBC2460839A00694ABA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E6260FBE246083A500694ABA /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E6260FC0246083B300694ABA /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		E6260FC2246083CF00694ABA /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		E6260FC3246083F900694ABA /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +59,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6260FBF246083A500694ABA /* CoreMedia.framework in Frameworks */,
+				E6260FBD2460839A00694ABA /* AVFoundation.framework in Frameworks */,
 				E6260F22246080F300694ABA /* libx264.a in Frameworks */,
+				E6260FBB2460839200694ABA /* AudioToolbox.framework in Frameworks */,
+				E6260FC1246083B300694ABA /* VideoToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +75,7 @@
 			children = (
 				E609F44324607E9B0047A1F8 /* KSPlayer */,
 				E609F44224607E9B0047A1F8 /* Products */,
+				E6260FB92460839200694ABA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +231,19 @@
 				E6260F2F2460813700694ABA /* log4cplus.h */,
 			);
 			path = 3rd;
+			sourceTree = "<group>";
+		};
+		E6260FB92460839200694ABA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6260FC3246083F900694ABA /* libiconv.tbd */,
+				E6260FC2246083CF00694ABA /* libbz2.tbd */,
+				E6260FC0246083B300694ABA /* VideoToolbox.framework */,
+				E6260FBE246083A500694ABA /* CoreMedia.framework */,
+				E6260FBC2460839A00694ABA /* AVFoundation.framework */,
+				E6260FBA2460839200694ABA /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,6 +474,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KSPlayer/Scripts/Library/fat-x264/lib",
+					"$(PROJECT_DIR)/KSPlayer/Scripts/Library/FFmpeg-iOS/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.saeipi.KSPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -468,6 +497,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KSPlayer/Scripts/Library/fat-x264/lib",
+					"$(PROJECT_DIR)/KSPlayer/Scripts/Library/FFmpeg-iOS/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.saeipi.KSPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
