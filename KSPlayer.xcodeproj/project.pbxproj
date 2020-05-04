@@ -476,7 +476,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KSPlayer/Scripts/Library/fat-x264/lib",
-					"$(PROJECT_DIR)/KSPlayer/Scripts/Library/FFmpeg-iOS/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.saeipi.KSPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -499,7 +498,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KSPlayer/Scripts/Library/fat-x264/lib",
-					"$(PROJECT_DIR)/KSPlayer/Scripts/Library/FFmpeg-iOS/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.saeipi.KSPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
