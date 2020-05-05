@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface XDXAduioDecoder : NSObject
 {
     @public
@@ -45,5 +43,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)freeDecoder;
 
 @end
-
-NS_ASSUME_NONNULL_END

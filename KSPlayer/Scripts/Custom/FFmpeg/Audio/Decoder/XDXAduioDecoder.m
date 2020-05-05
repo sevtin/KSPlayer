@@ -92,15 +92,15 @@ OSStatus DecodeConverterComplexInputDataProc(AudioConverterRef              inAu
         NSLog(@"Not get compression format after decoding !");
         return NULL;
     } else {
-        destinationFormat.mFormatID = destFormatID;
-        destinationFormat.mChannelsPerFrame  = 1;
-        destinationFormat.mFormatID          = kAudioFormatLinearPCM;
-        destinationFormat.mFormatFlags       = (kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked);
-        destinationFormat.mFramesPerPacket   = kXDXAudioPCMFramesPerPacket;
-        destinationFormat.mBitsPerChannel    = KXDXAudioBitsPerChannel;
-        destinationFormat.mBytesPerFrame     = destinationFormat.mBitsPerChannel / 8 *destinationFormat.mChannelsPerFrame;
-        destinationFormat.mBytesPerPacket    = destinationFormat.mBytesPerFrame * destinationFormat.mFramesPerPacket;
-        destinationFormat.mReserved          =  0;
+        destinationFormat.mFormatID         = destFormatID;
+        destinationFormat.mChannelsPerFrame = 1;
+        destinationFormat.mFormatID         = kAudioFormatLinearPCM;
+        destinationFormat.mFormatFlags      = (kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked);
+        destinationFormat.mFramesPerPacket  = kXDXAudioPCMFramesPerPacket;
+        destinationFormat.mBitsPerChannel   = KXDXAudioBitsPerChannel;
+        destinationFormat.mBytesPerFrame    = destinationFormat.mBitsPerChannel / 8 *destinationFormat.mChannelsPerFrame;
+        destinationFormat.mBytesPerPacket   = destinationFormat.mBytesPerFrame * destinationFormat.mFramesPerPacket;
+        destinationFormat.mReserved         = 0;
     }
     memcpy(destFormat, &destinationFormat, sizeof(AudioStreamBasicDescription));
     
@@ -126,21 +126,21 @@ OSStatus DecodeConverterComplexInputDataProc(AudioConverterRef              inAu
 
 - (void)decodeFormatByConverter:(AudioConverterRef)audioConverter sourceBuffer:(void *)sourceBuffer sourceBufferSize:(UInt32)sourceBufferSize sourceFormat:(AudioStreamBasicDescription)sourceFormat dest:(AudioStreamBasicDescription)destFormat completeHandler:(void(^)(AudioBufferList *destBufferList, UInt32 outputPackets, AudioStreamPacketDescription *outputPacketDescriptions))completeHandler {
     // Note: audio convert must set 1024.
-    UInt32 ioOutputDataPackets = kIOOutputDataPackets;
-    UInt32 outputBufferSize = (UInt32)(ioOutputDataPackets * destFormat.mChannelsPerFrame * destFormat.mBytesPerFrame);
+    UInt32 ioOutputDataPackets                  = kIOOutputDataPackets;
+    UInt32 outputBufferSize                     = (UInt32)(ioOutputDataPackets * destFormat.mChannelsPerFrame * destFormat.mBytesPerFrame);
     // Set up output buffer list.
-    AudioBufferList fillBufferList = {0};
-    fillBufferList.mNumberBuffers = 1;
+    AudioBufferList fillBufferList              = {0};
+    fillBufferList.mNumberBuffers               = 1;
     fillBufferList.mBuffers[0].mNumberChannels  = destFormat.mChannelsPerFrame;
     fillBufferList.mBuffers[0].mDataByteSize    = outputBufferSize;
     fillBufferList.mBuffers[0].mData            = malloc(outputBufferSize * sizeof(char));
-    
-    XDXConverterInfoType userInfo        = {0};
-    userInfo.sourceBuffer                = sourceBuffer;
-    userInfo.sourceDataSize              = sourceBufferSize;
-    userInfo.sourceChannelsPerFrame      = sourceFormat.mChannelsPerFrame;
-    userInfo.packetDesc.mDataByteSize    = (UInt32)sourceBufferSize;
-    userInfo.packetDesc.mStartOffset     = 0;
+
+    XDXConverterInfoType userInfo               = {0};
+    userInfo.sourceBuffer                       = sourceBuffer;
+    userInfo.sourceDataSize                     = sourceBufferSize;
+    userInfo.sourceChannelsPerFrame             = sourceFormat.mChannelsPerFrame;
+    userInfo.packetDesc.mDataByteSize           = (UInt32)sourceBufferSize;
+    userInfo.packetDesc.mStartOffset            = 0;
     userInfo.packetDesc.mVariableFramesInPacket = 0;
     
     AudioStreamPacketDescription outputPacketDesc = {0};
@@ -274,6 +274,5 @@ OSStatus DecodeConverterComplexInputDataProc(AudioConverterRef              inAu
     }
     return nil;
 }
-
 
 @end
