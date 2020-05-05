@@ -22,7 +22,6 @@ SingletonH
 
 + (instancetype)getInstance;
 
-
 /**
  configure player
 
@@ -32,7 +31,6 @@ SingletonH
 - (void)configureAudioPlayerWithAudioFormat:(AudioStreamBasicDescription *)audioFormat
                                  bufferSize:(int)bufferSize;
 
-
 /**
  * Control player
  */
@@ -41,7 +39,6 @@ SingletonH
 - (void)resumeAudioPlayer;
 - (void)stopAudioPlayer;
 - (void)freeAudioPlayer;
-
 
 /**
  * get audio queue buffer size
