@@ -8,8 +8,8 @@
 
 #import "ViewController.h"
 #import "KSMediaPlayerController.h"
+#import "KSAudioPlayerController.h"
 #import "KSMainCell.h"
-
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
@@ -47,7 +47,24 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    KSMediaPlayerController *ctrl = [[KSMediaPlayerController alloc] init];
-    [self.navigationController pushViewController:ctrl animated:NO];
+    UIViewController *ctrl;
+    switch (indexPath.row) {
+        case 0:
+        {
+            ctrl = [[KSMediaPlayerController alloc] init];
+        }
+            break;
+        case 1:
+        {
+            ctrl = [[KSAudioPlayerController alloc] init];
+        }
+            break;
+        default:
+            break;
+    }
+    if (ctrl) {
+        [self.navigationController pushViewController:ctrl animated:NO];
+    }
 }
+
 @end

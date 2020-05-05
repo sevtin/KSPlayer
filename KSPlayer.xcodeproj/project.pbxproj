@@ -39,14 +39,15 @@
 		E62610642460872E00694ABA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6260FC42460856F00694ABA /* libz.tbd */; };
 		E62610652460873C00694ABA /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6260FC3246083F900694ABA /* libiconv.tbd */; };
 		E62610662460874D00694ABA /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E6260FC2246083CF00694ABA /* libbz2.tbd */; };
-		E6921A45246140900099209B /* KSMediaPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A44246140900099209B /* KSMediaPlayerController.m */; };
-		E6921A49246142010099209B /* KSMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A48246142010099209B /* KSMainCell.m */; };
-		E6921A4E246144650099209B /* KSBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A4D246144650099209B /* KSBaseController.m */; };
 		E6921A5324614CAD0099209B /* XDXFFmpegAudioDecoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A4F24614CAC0099209B /* XDXFFmpegAudioDecoder.mm */; };
 		E6921A5424614CAD0099209B /* XDXAduioDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A5224614CAD0099209B /* XDXAduioDecoder.m */; };
 		E6921A65246153740099209B /* XDXAudioQueuePlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A61246153740099209B /* XDXAudioQueuePlayer.mm */; };
 		E6921A66246153740099209B /* XDXQueueProcess.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A63246153740099209B /* XDXQueueProcess.mm */; };
-		E6921A6C246154920099209B /* KSAudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A6B246154920099209B /* KSAudioPlayerController.m */; };
+		E6921A74246168390099209B /* KSMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A72246168390099209B /* KSMainCell.m */; };
+		E6921A77246168620099209B /* KSBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A76246168620099209B /* KSBaseController.m */; };
+		E6921A7A246168780099209B /* KSAudioPlayerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A78246168780099209B /* KSAudioPlayerController.mm */; };
+		E6921A7D246168910099209B /* KSMediaPlayerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A7B246168910099209B /* KSMediaPlayerController.mm */; };
+		E6921A80246168AC0099209B /* KSVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A7F246168AC0099209B /* KSVideoPlayerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -209,12 +210,6 @@
 		E626105A2460864E00694ABA /* XDXSortFrameHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDXSortFrameHandler.m; sourceTree = "<group>"; };
 		E626105C2460864E00694ABA /* XDXPreviewView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = XDXPreviewView.mm; sourceTree = "<group>"; };
 		E626105D2460864E00694ABA /* XDXPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDXPreviewView.h; sourceTree = "<group>"; };
-		E6921A43246140900099209B /* KSMediaPlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSMediaPlayerController.h; path = ../../../../../../../../../../Documents/KSMediaPlayerController.h; sourceTree = "<group>"; };
-		E6921A44246140900099209B /* KSMediaPlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KSMediaPlayerController.m; path = ../../../../../../../../../../Documents/KSMediaPlayerController.m; sourceTree = "<group>"; };
-		E6921A47246142010099209B /* KSMainCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSMainCell.h; path = ../../../../../../../../../../Documents/KSMainCell.h; sourceTree = "<group>"; };
-		E6921A48246142010099209B /* KSMainCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KSMainCell.m; path = ../../../../../../../../../../Documents/KSMainCell.m; sourceTree = "<group>"; };
-		E6921A4C246144650099209B /* KSBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSBaseController.h; path = ../../../../../../../../../../Documents/KSBaseController.h; sourceTree = "<group>"; };
-		E6921A4D246144650099209B /* KSBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KSBaseController.m; path = ../../../../../../../../../../Documents/KSBaseController.m; sourceTree = "<group>"; };
 		E6921A4F24614CAC0099209B /* XDXFFmpegAudioDecoder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = XDXFFmpegAudioDecoder.mm; sourceTree = "<group>"; };
 		E6921A5024614CAD0099209B /* XDXAduioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDXAduioDecoder.h; sourceTree = "<group>"; };
 		E6921A5124614CAD0099209B /* XDXFFmpegAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDXFFmpegAudioDecoder.h; sourceTree = "<group>"; };
@@ -224,8 +219,16 @@
 		E6921A62246153740099209B /* XDXQueueProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDXQueueProcess.h; sourceTree = "<group>"; };
 		E6921A63246153740099209B /* XDXQueueProcess.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = XDXQueueProcess.mm; sourceTree = "<group>"; };
 		E6921A64246153740099209B /* XDXAudioQueuePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDXAudioQueuePlayer.h; sourceTree = "<group>"; };
-		E6921A6A246154920099209B /* KSAudioPlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSAudioPlayerController.h; path = ../../../../../../../../../../Documents/KSAudioPlayerController.h; sourceTree = "<group>"; };
-		E6921A6B246154920099209B /* KSAudioPlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KSAudioPlayerController.m; path = ../../../../../../../../../../Documents/KSAudioPlayerController.m; sourceTree = "<group>"; };
+		E6921A72246168390099209B /* KSMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSMainCell.m; sourceTree = "<group>"; };
+		E6921A73246168390099209B /* KSMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSMainCell.h; sourceTree = "<group>"; };
+		E6921A75246168620099209B /* KSBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSBaseController.h; sourceTree = "<group>"; };
+		E6921A76246168620099209B /* KSBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSBaseController.m; sourceTree = "<group>"; };
+		E6921A78246168780099209B /* KSAudioPlayerController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KSAudioPlayerController.mm; sourceTree = "<group>"; };
+		E6921A79246168780099209B /* KSAudioPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSAudioPlayerController.h; sourceTree = "<group>"; };
+		E6921A7B246168910099209B /* KSMediaPlayerController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KSMediaPlayerController.mm; sourceTree = "<group>"; };
+		E6921A7C246168910099209B /* KSMediaPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSMediaPlayerController.h; sourceTree = "<group>"; };
+		E6921A7E246168AC0099209B /* KSVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSVideoPlayerController.h; sourceTree = "<group>"; };
+		E6921A7F246168AC0099209B /* KSVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSVideoPlayerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +328,7 @@
 		E6260F152460806400694ABA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E6921A6D24615B0B0099209B /* VideoPlayer */,
 				E6921A672461546E0099209B /* AudioPlayer */,
 				E6921A4A2461443D0099209B /* Base */,
 				E6921A412461406A0099209B /* MediaPlayer */,
@@ -692,8 +696,8 @@
 		E6921A42246140750099209B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E6921A43246140900099209B /* KSMediaPlayerController.h */,
-				E6921A44246140900099209B /* KSMediaPlayerController.m */,
+				E6921A7C246168910099209B /* KSMediaPlayerController.h */,
+				E6921A7B246168910099209B /* KSMediaPlayerController.mm */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -701,8 +705,8 @@
 		E6921A46246141DB0099209B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E6921A47246142010099209B /* KSMainCell.h */,
-				E6921A48246142010099209B /* KSMainCell.m */,
+				E6921A73246168390099209B /* KSMainCell.h */,
+				E6921A72246168390099209B /* KSMainCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -718,8 +722,8 @@
 		E6921A4B246144490099209B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E6921A4C246144650099209B /* KSBaseController.h */,
-				E6921A4D246144650099209B /* KSBaseController.m */,
+				E6921A75246168620099209B /* KSBaseController.h */,
+				E6921A76246168620099209B /* KSBaseController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -774,8 +778,25 @@
 		E6921A68246154760099209B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E6921A6A246154920099209B /* KSAudioPlayerController.h */,
-				E6921A6B246154920099209B /* KSAudioPlayerController.m */,
+				E6921A79246168780099209B /* KSAudioPlayerController.h */,
+				E6921A78246168780099209B /* KSAudioPlayerController.mm */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E6921A6D24615B0B0099209B /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E6921A6E24615B1E0099209B /* Controller */,
+			);
+			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		E6921A6E24615B1E0099209B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E6921A7E246168AC0099209B /* KSVideoPlayerController.h */,
+				E6921A7F246168AC0099209B /* KSVideoPlayerController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -855,23 +876,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				E609F44924607E9B0047A1F8 /* ViewController.m in Sources */,
+				E6921A80246168AC0099209B /* KSVideoPlayerController.m in Sources */,
 				E609F45424607E9C0047A1F8 /* main.m in Sources */,
 				E626105E2460864E00694ABA /* XDXAVParseHandler.mm in Sources */,
 				E62610612460864E00694ABA /* XDXVideoDecoder.mm in Sources */,
 				E62610622460864E00694ABA /* XDXSortFrameHandler.m in Sources */,
-				E6921A6C246154920099209B /* KSAudioPlayerController.m in Sources */,
 				E6921A5324614CAD0099209B /* XDXFFmpegAudioDecoder.mm in Sources */,
 				E6921A65246153740099209B /* XDXAudioQueuePlayer.mm in Sources */,
 				E62610602460864E00694ABA /* KSVideoDecoder.m in Sources */,
 				E62610632460864E00694ABA /* XDXPreviewView.mm in Sources */,
 				E6921A66246153740099209B /* XDXQueueProcess.mm in Sources */,
 				E609F44624607E9B0047A1F8 /* AppDelegate.m in Sources */,
-				E6921A4E246144650099209B /* KSBaseController.m in Sources */,
 				E626105F2460864E00694ABA /* XDXFFmpegVideoDecoder.mm in Sources */,
-				E6921A45246140900099209B /* KSMediaPlayerController.m in Sources */,
+				E6921A77246168620099209B /* KSBaseController.m in Sources */,
+				E6921A7D246168910099209B /* KSMediaPlayerController.mm in Sources */,
 				E6921A5424614CAD0099209B /* XDXAduioDecoder.m in Sources */,
-				E6921A49246142010099209B /* KSMainCell.m in Sources */,
 				E6260F23246080F300694ABA /* g711.c in Sources */,
+				E6921A7A246168780099209B /* KSAudioPlayerController.mm in Sources */,
+				E6921A74246168390099209B /* KSMainCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
