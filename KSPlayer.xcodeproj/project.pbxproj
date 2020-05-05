@@ -42,6 +42,11 @@
 		E6921A45246140900099209B /* KSMediaPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A44246140900099209B /* KSMediaPlayerController.m */; };
 		E6921A49246142010099209B /* KSMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A48246142010099209B /* KSMainCell.m */; };
 		E6921A4E246144650099209B /* KSBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A4D246144650099209B /* KSBaseController.m */; };
+		E6921A5324614CAD0099209B /* XDXFFmpegAudioDecoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A4F24614CAC0099209B /* XDXFFmpegAudioDecoder.mm */; };
+		E6921A5424614CAD0099209B /* XDXAduioDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A5224614CAD0099209B /* XDXAduioDecoder.m */; };
+		E6921A65246153740099209B /* XDXAudioQueuePlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A61246153740099209B /* XDXAudioQueuePlayer.mm */; };
+		E6921A66246153740099209B /* XDXQueueProcess.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A63246153740099209B /* XDXQueueProcess.mm */; };
+		E6921A6C246154920099209B /* KSAudioPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A6B246154920099209B /* KSAudioPlayerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -210,6 +215,17 @@
 		E6921A48246142010099209B /* KSMainCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KSMainCell.m; path = ../../../../../../../../../../Documents/KSMainCell.m; sourceTree = "<group>"; };
 		E6921A4C246144650099209B /* KSBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSBaseController.h; path = ../../../../../../../../../../Documents/KSBaseController.h; sourceTree = "<group>"; };
 		E6921A4D246144650099209B /* KSBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KSBaseController.m; path = ../../../../../../../../../../Documents/KSBaseController.m; sourceTree = "<group>"; };
+		E6921A4F24614CAC0099209B /* XDXFFmpegAudioDecoder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = XDXFFmpegAudioDecoder.mm; sourceTree = "<group>"; };
+		E6921A5024614CAD0099209B /* XDXAduioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDXAduioDecoder.h; sourceTree = "<group>"; };
+		E6921A5124614CAD0099209B /* XDXFFmpegAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDXFFmpegAudioDecoder.h; sourceTree = "<group>"; };
+		E6921A5224614CAD0099209B /* XDXAduioDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDXAduioDecoder.m; sourceTree = "<group>"; };
+		E6921A5C24614D040099209B /* XDXSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XDXSingleton.h; sourceTree = "<group>"; };
+		E6921A61246153740099209B /* XDXAudioQueuePlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = XDXAudioQueuePlayer.mm; sourceTree = "<group>"; };
+		E6921A62246153740099209B /* XDXQueueProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDXQueueProcess.h; sourceTree = "<group>"; };
+		E6921A63246153740099209B /* XDXQueueProcess.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = XDXQueueProcess.mm; sourceTree = "<group>"; };
+		E6921A64246153740099209B /* XDXAudioQueuePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDXAudioQueuePlayer.h; sourceTree = "<group>"; };
+		E6921A6A246154920099209B /* KSAudioPlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KSAudioPlayerController.h; path = ../../../../../../../../../../Documents/KSAudioPlayerController.h; sourceTree = "<group>"; };
+		E6921A6B246154920099209B /* KSAudioPlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KSAudioPlayerController.m; path = ../../../../../../../../../../Documents/KSAudioPlayerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +325,7 @@
 		E6260F152460806400694ABA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E6921A672461546E0099209B /* AudioPlayer */,
 				E6921A4A2461443D0099209B /* Base */,
 				E6921A412461406A0099209B /* MediaPlayer */,
 				E6260F162460806E00694ABA /* Main */,
@@ -401,6 +418,7 @@
 		E6260F2E2460813700694ABA /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				E6921A5C24614D040099209B /* XDXSingleton.h */,
 				E6260F2F2460813700694ABA /* log4cplus.h */,
 			);
 			path = 3rd;
@@ -622,8 +640,9 @@
 		E626104E2460864E00694ABA /* FFmpeg */ = {
 			isa = PBXGroup;
 			children = (
+				E6921A5E246152ED0099209B /* Video */,
+				E6921A5D246152DD0099209B /* Audio */,
 				E626104F2460864E00694ABA /* Parse */,
-				E62610522460864E00694ABA /* Decoder */,
 				E626105B2460864E00694ABA /* Render */,
 			);
 			path = FFmpeg;
@@ -701,6 +720,62 @@
 			children = (
 				E6921A4C246144650099209B /* KSBaseController.h */,
 				E6921A4D246144650099209B /* KSBaseController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E6921A5D246152DD0099209B /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				E6921A60246153740099209B /* AudioPlayer */,
+				E6921A5F246152FC0099209B /* Decoder */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		E6921A5E246152ED0099209B /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				E62610522460864E00694ABA /* Decoder */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		E6921A5F246152FC0099209B /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				E6921A5024614CAD0099209B /* XDXAduioDecoder.h */,
+				E6921A5224614CAD0099209B /* XDXAduioDecoder.m */,
+				E6921A5124614CAD0099209B /* XDXFFmpegAudioDecoder.h */,
+				E6921A4F24614CAC0099209B /* XDXFFmpegAudioDecoder.mm */,
+			);
+			path = Decoder;
+			sourceTree = "<group>";
+		};
+		E6921A60246153740099209B /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E6921A64246153740099209B /* XDXAudioQueuePlayer.h */,
+				E6921A61246153740099209B /* XDXAudioQueuePlayer.mm */,
+				E6921A62246153740099209B /* XDXQueueProcess.h */,
+				E6921A63246153740099209B /* XDXQueueProcess.mm */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		E6921A672461546E0099209B /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E6921A68246154760099209B /* Controller */,
+			);
+			path = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		E6921A68246154760099209B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E6921A6A246154920099209B /* KSAudioPlayerController.h */,
+				E6921A6B246154920099209B /* KSAudioPlayerController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -784,12 +859,17 @@
 				E626105E2460864E00694ABA /* XDXAVParseHandler.mm in Sources */,
 				E62610612460864E00694ABA /* XDXVideoDecoder.mm in Sources */,
 				E62610622460864E00694ABA /* XDXSortFrameHandler.m in Sources */,
+				E6921A6C246154920099209B /* KSAudioPlayerController.m in Sources */,
+				E6921A5324614CAD0099209B /* XDXFFmpegAudioDecoder.mm in Sources */,
+				E6921A65246153740099209B /* XDXAudioQueuePlayer.mm in Sources */,
 				E62610602460864E00694ABA /* KSVideoDecoder.m in Sources */,
 				E62610632460864E00694ABA /* XDXPreviewView.mm in Sources */,
+				E6921A66246153740099209B /* XDXQueueProcess.mm in Sources */,
 				E609F44624607E9B0047A1F8 /* AppDelegate.m in Sources */,
 				E6921A4E246144650099209B /* KSBaseController.m in Sources */,
 				E626105F2460864E00694ABA /* XDXFFmpegVideoDecoder.mm in Sources */,
 				E6921A45246140900099209B /* KSMediaPlayerController.m in Sources */,
+				E6921A5424614CAD0099209B /* XDXAduioDecoder.m in Sources */,
 				E6921A49246142010099209B /* KSMainCell.m in Sources */,
 				E6260F23246080F300694ABA /* g711.c in Sources */,
 			);
