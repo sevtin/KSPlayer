@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "XDXAVParseHandler.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @protocol XDXVideoDecoderDelegate <NSObject>
 
 @optional
@@ -20,8 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XDXVideoDecoder : NSObject
 
-@property (weak, nonatomic) id<XDXVideoDecoderDelegate> delegate;
-
+@property (nonatomic, weak) id<XDXVideoDecoderDelegate> delegate;
 
 /**
     Start / Stop decoder
@@ -29,12 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)startDecodeVideoData:(struct XDXParseVideoDataInfo *)videoInfo;
 - (void)stopDecoder;
 
-
 /**
     Reset timestamp when you parse a new file (only use the decoder as global var)
  */
 - (void)resetTimestamp;
 
 @end
-
-NS_ASSUME_NONNULL_END

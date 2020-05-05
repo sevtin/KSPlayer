@@ -25,30 +25,30 @@ typedef struct {
 typedef struct {
     uint8_t *vps;
     uint8_t *sps;
-    
+
     // H265有前后两个pps
     uint8_t *f_pps;
     uint8_t *r_pps;
-    
+
     int vps_size;
     int sps_size;
     int f_pps_size;
     int r_pps_size;
-    
+
     Float64 last_decode_pts;
 } XDXDecoderInfo;
 
 @interface XDXVideoDecoder ()
 {
-    VTDecompressionSessionRef   _decoderSession;
+    VTDecompressionSessionRef _decoderSession;
     CMVideoFormatDescriptionRef _decoderFormatDescription;
 
-    XDXDecoderInfo  _decoderInfo;
+    XDXDecoderInfo _decoderInfo;
     pthread_mutex_t _decoder_lock;
-    
+
     uint8_t *_lastExtraData;
-    int     _lastExtraDataSize;
-    
+    int _lastExtraDataSize;
+
     BOOL _isFirstFrame;
 }
 
@@ -444,20 +444,20 @@ static void VideoDecoderCallback(void *decompressionOutputRefCon, void *sourceFr
 #pragma mark Decode
 - (void)startDecode:(XDXParseVideoDataInfo *)videoInfo session:(VTDecompressionSessionRef)session lock:(pthread_mutex_t)lock {
     pthread_mutex_lock(&lock);
-    uint8_t *data  = videoInfo->data;
-    int     size   = videoInfo->dataSize;
-    int     rotate = videoInfo->videoRotate;
+    uint8_t *data                 = videoInfo->data;
+    int size                      = videoInfo->dataSize;
+    int rotate                    = videoInfo->videoRotate;
     CMSampleTimingInfo timingInfo = videoInfo->timingInfo;
-    
-    uint8_t *tempData = (uint8_t *)malloc(size);
+
+    uint8_t *tempData             = (uint8_t *)malloc(size);
     memcpy(tempData, data, size);
-    
+
     XDXDecodeVideoInfo *sourceRef = (XDXDecodeVideoInfo *)malloc(sizeof(XDXParseVideoDataInfo));
     sourceRef->outputPixelbuffer  = NULL;
     sourceRef->rotate             = rotate;
     sourceRef->pts                = videoInfo->pts;
     sourceRef->fps                = videoInfo->fps;
-    
+
     CMBlockBufferRef blockBuffer;
     OSStatus status = CMBlockBufferCreateWithMemoryBlock(kCFAllocatorDefault,
                                                          (void *)tempData,
@@ -519,11 +519,11 @@ static void VideoDecoderCallback(void *decompressionOutputRefCon, void *sourceFr
     if (!pixelBuffer) {
         return NULL;
     }
-    
-    CVPixelBufferRef final_pixelbuffer = pixelBuffer;
-    CMSampleBufferRef samplebuffer = NULL;
+
+    CVPixelBufferRef final_pixelbuffer    = pixelBuffer;
+    CMSampleBufferRef samplebuffer        = NULL;
     CMVideoFormatDescriptionRef videoInfo = NULL;
-    OSStatus status = CMVideoFormatDescriptionCreateForImageBuffer(kCFAllocatorDefault, final_pixelbuffer, &videoInfo);
+    OSStatus status                       = CMVideoFormatDescriptionCreateForImageBuffer(kCFAllocatorDefault, final_pixelbuffer, &videoInfo);
     status = CMSampleBufferCreateForImageBuffer(kCFAllocatorDefault, final_pixelbuffer, true, NULL, NULL, videoInfo, &timingInfo, &samplebuffer);
     
     if (videoInfo != NULL) {
