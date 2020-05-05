@@ -6,9 +6,9 @@
 //  Copyright © 2020 saeipi. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "KSBaseController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : KSBaseController
 
 
 @end
