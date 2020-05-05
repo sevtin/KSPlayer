@@ -118,30 +118,30 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
         log4cplus_error(kModuleName, "%s: Send audio data to decoder failed.",__func__);
     }else {
         while (0 == avcodec_receive_frame(audioCodecContext, audioFrame)) {
-            Float64 ptsSec = audioFrame->pts* av_q2d(m_formatContext->streams[audioStreamIndex]->time_base);
+            Float64 ptsSec                    = audioFrame->pts* av_q2d(m_formatContext->streams[audioStreamIndex]->time_base);
             struct SwrContext *au_convert_ctx = swr_alloc();
-            au_convert_ctx = swr_alloc_set_opts(au_convert_ctx,
-                                                AV_CH_LAYOUT_STEREO,
-                                                AV_SAMPLE_FMT_S16,
-                                                48000,
-                                                audioCodecContext->channel_layout,
-                                                audioCodecContext->sample_fmt,
-                                                audioCodecContext->sample_rate,
-                                                0,
-                                                NULL);
+            au_convert_ctx                    = swr_alloc_set_opts(au_convert_ctx,
+                                                                   AV_CH_LAYOUT_STEREO,
+                                                                   AV_SAMPLE_FMT_S16,
+                                                                   48000,
+                                                                   audioCodecContext->channel_layout,
+                                                                   audioCodecContext->sample_fmt,
+                                                                   audioCodecContext->sample_rate,
+                                                                   0,
+                                                                   NULL);
             swr_init(au_convert_ctx);
             int out_linesize;
-            int out_buffer_size = av_samples_get_buffer_size(&out_linesize,
-                                                             audioCodecContext->channels,
-                                                             audioCodecContext->frame_size,
-                                                             audioCodecContext->sample_fmt,
-                                                             1);
+            int out_buffer_size               = av_samples_get_buffer_size(&out_linesize,
+                                                                           audioCodecContext->channels,
+                                                                           audioCodecContext->frame_size,
+                                                                           audioCodecContext->sample_fmt,
+                                                                           1);
             
-            uint8_t *out_buffer = (uint8_t *)av_malloc(out_buffer_size);
+            uint8_t *out_buffer               = (uint8_t *)av_malloc(out_buffer_size);
             // 解码
             swr_convert(au_convert_ctx, &out_buffer, out_linesize, (const uint8_t **)audioFrame->data , audioFrame->nb_samples);
             swr_free(&au_convert_ctx);
-            au_convert_ctx = NULL;
+            au_convert_ctx                   = NULL;
             if ([self.delegate respondsToSelector:@selector(getDecodeAudioDataByFFmpeg:size:pts:isFirstFrame:)]) {
                 [self.delegate getDecodeAudioDataByFFmpeg:out_buffer size:out_linesize pts:ptsSec isFirstFrame:m_isFirstFrame];
                 m_isFirstFrame=NO;
