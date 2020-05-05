@@ -666,12 +666,12 @@
 			children = (
 				E62610562460864E00694ABA /* XDXFFmpegVideoDecoder.h */,
 				E62610532460864E00694ABA /* XDXFFmpegVideoDecoder.mm */,
-				E62610542460864E00694ABA /* KSVideoDecoder.m */,
 				E62610552460864E00694ABA /* XDXSortFrameHandler.h */,
-				E62610572460864E00694ABA /* XDXVideoDecoder.mm */,
-				E62610582460864E00694ABA /* KSVideoDecoder.h */,
-				E62610592460864E00694ABA /* XDXVideoDecoder.h */,
 				E626105A2460864E00694ABA /* XDXSortFrameHandler.m */,
+				E62610582460864E00694ABA /* KSVideoDecoder.h */,
+				E62610542460864E00694ABA /* KSVideoDecoder.m */,
+				E62610592460864E00694ABA /* XDXVideoDecoder.h */,
+				E62610572460864E00694ABA /* XDXVideoDecoder.mm */,
 			);
 			path = Decoder;
 			sourceTree = "<group>";
