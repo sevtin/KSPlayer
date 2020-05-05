@@ -38,9 +38,8 @@ int kXDXBufferSize = 4096;
     [self initializeKit];
     [self initializeArgs];
     
-    [self initializeAudio];
-    //[self startDecodeByFFmpegWithIsH265Data:self.isH265File];
-    [self startDecodeByFFmpeg];
+    //[self initializeAudio];
+    [self startDecodeByFFmpegWithIsH265Data:self.isH265File];
 }
 
 - (void)initializeKit {
@@ -112,20 +111,20 @@ int kXDXBufferSize = 4096;
 
     XDXFFmpegVideoDecoder *decoder      = [[XDXFFmpegVideoDecoder alloc] initWithFormatContext:formatContext videoStreamIndex:[parseHandler getVideoStreamIndex]];
     decoder.delegate                    = self;
-
+    /*
     XDXFFmpegAudioDecoder *audioDecoder = [[XDXFFmpegAudioDecoder alloc] initWithFormatContext:formatContext audioStreamIndex:[parseHandler getAudioStreamIndex]];
     audioDecoder.delegate               = self;
-    
+    */
     [parseHandler startParseGetAVPackeWithCompletionHandler:^(BOOL isVideoFrame, BOOL isFinish, AVPacket packet) {
         if (isFinish) {
             [decoder stopDecoder];
-            [audioDecoder stopDecoder];
+            //[audioDecoder stopDecoder];
             return;
         }
         
         if (isVideoFrame) {
-            //[decoder startDecodeVideoDataWithAVPacket:packet];
-            [audioDecoder startDecodeAudioDataWithAVPacket:packet];
+            [decoder startDecodeVideoDataWithAVPacket:packet];
+            //[audioDecoder startDecodeAudioDataWithAVPacket:packet];
         }
     }];
     
@@ -172,17 +171,18 @@ int kXDXBufferSize = 4096;
 
     XDXFFmpegVideoDecoder *decoder      = [[XDXFFmpegVideoDecoder alloc] initWithFormatContext:formatContext videoStreamIndex:[parseHandler getVideoStreamIndex]];
     decoder.delegate                    = self;
-    
+    /*
     XDXFFmpegAudioDecoder *audioDecoder = [[XDXFFmpegAudioDecoder alloc] initWithFormatContext:formatContext audioStreamIndex:[parseHandler getAudioStreamIndex]];
     audioDecoder.delegate = self;
+     */
     [parseHandler startParseGetAVPackeWithCompletionHandler:^(BOOL isVideoFrame, BOOL isFinish, AVPacket packet) {
         if (isFinish) {
-            [audioDecoder stopDecoder];
+            //[audioDecoder stopDecoder];
             [decoder stopDecoder];
             return;
         }
         if (!isVideoFrame) {
-            [audioDecoder startDecodeAudioDataWithAVPacket:packet];
+            //[audioDecoder startDecodeAudioDataWithAVPacket:packet];
             [decoder startDecodeVideoDataWithAVPacket:packet];
         }
     }];
