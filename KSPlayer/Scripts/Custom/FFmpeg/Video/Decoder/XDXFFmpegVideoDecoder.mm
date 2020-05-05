@@ -79,14 +79,14 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
                                                             stream:videoStream
                                                   videoStreamIndex:m_videoStreamIndex];
     if (!m_videoCodecContext) {
-        log4cplus_error(kModuleName, "%s: create video codec failed",__func__);
+        log4cplus_error(kModuleName, "%s: create video codec failed", __func__);
         return;
     }
     
     // Get video frame
     m_videoFrame = av_frame_alloc();
     if (!m_videoFrame) {
-        log4cplus_error(kModuleName, "%s: alloc video frame failed",__func__);
+        log4cplus_error(kModuleName, "%s: alloc video frame failed", __func__);
         avcodec_close(m_videoCodecContext);
     }
 }
@@ -107,6 +107,8 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
     }
 }
 
+
+/// 停止解码
 - (void)stopDecoder {
     [self freeAllResources];
 }
@@ -114,7 +116,7 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
 #pragma mark - Private
 - (AVCodecContext *)createVideoEncderWithFormatContext:(AVFormatContext *)formatContext stream:(AVStream *)stream videoStreamIndex:(int)videoStreamIndex {
     AVCodecContext *codecContext = NULL;
-    AVCodec *codec = NULL;
+    AVCodec *codec               = NULL;
     
     const char *codecName = av_hwdevice_get_type_name(AV_HWDEVICE_TYPE_VIDEOTOOLBOX);
     enum AVHWDeviceType type = av_hwdevice_find_type_by_name(codecName);
@@ -158,18 +160,17 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
 
 - (void)startDecodeVideoDataWithAVPacket:(AVPacket)packet videoCodecContext:(AVCodecContext *)videoCodecContext videoFrame:(AVFrame *)videoFrame baseTime:(int64_t)baseTime videoStreamIndex:(int)videoStreamIndex {
     Float64 current_timestamp = [self getCurrentTimestamp];
-    AVStream *videoStream = m_formatContext->streams[videoStreamIndex];
-    int fps = DecodeGetAVStreamFPSTimeBase(videoStream);
-    
-    
+    AVStream *videoStream     = m_formatContext->streams[videoStreamIndex];
+    int fps                   = DecodeGetAVStreamFPSTimeBase(videoStream);
+
     avcodec_send_packet(videoCodecContext, &packet);
     while (0 == avcodec_receive_frame(videoCodecContext, videoFrame))
     {
-        CVPixelBufferRef pixelBuffer = (CVPixelBufferRef)videoFrame->data[3];
-        CMTime presentationTimeStamp = kCMTimeInvalid;
-        int64_t originPTS = videoFrame->pts;
-        int64_t newPTS    = originPTS - baseTime;
-        presentationTimeStamp = CMTimeMakeWithSeconds(current_timestamp + newPTS * av_q2d(videoStream->time_base) , fps);
+        CVPixelBufferRef pixelBuffer      = (CVPixelBufferRef)videoFrame->data[3];
+        CMTime presentationTimeStamp      = kCMTimeInvalid;
+        int64_t originPTS                 = videoFrame->pts;
+        int64_t newPTS                    = originPTS - baseTime;
+        presentationTimeStamp             = CMTimeMakeWithSeconds(current_timestamp + newPTS * av_q2d(videoStream->time_base) , fps);
         CMSampleBufferRef sampleBufferRef = [self convertCVImageBufferRefToCMSampleBufferRef:(CVPixelBufferRef)pixelBuffer
                                                                    withPresentationTimeStamp:presentationTimeStamp];
         
@@ -182,6 +183,7 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
     }
 }
 
+/// 释放所有资源
 - (void)freeAllResources {
     if (m_videoCodecContext) {
         avcodec_send_packet(m_videoCodecContext, NULL);
@@ -206,13 +208,13 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
 {
     CVPixelBufferLockBaseAddress(pixelBuffer, 0);
     CMSampleBufferRef newSampleBuffer = NULL;
-    OSStatus res = 0;
-    
+    OSStatus res                      = 0;
+
     CMSampleTimingInfo timingInfo;
-    timingInfo.duration              = kCMTimeInvalid;
-    timingInfo.decodeTimeStamp       = presentationTimeStamp;
-    timingInfo.presentationTimeStamp = presentationTimeStamp;
-    
+    timingInfo.duration               = kCMTimeInvalid;
+    timingInfo.decodeTimeStamp        = presentationTimeStamp;
+    timingInfo.presentationTimeStamp  = presentationTimeStamp;
+
     CMVideoFormatDescriptionRef videoInfo = NULL;
     res = CMVideoFormatDescriptionCreateForImageBuffer(NULL, pixelBuffer, &videoInfo);
     if (res != 0) {
