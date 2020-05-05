@@ -664,10 +664,10 @@
 		E62610522460864E00694ABA /* Decoder */ = {
 			isa = PBXGroup;
 			children = (
+				E62610562460864E00694ABA /* XDXFFmpegVideoDecoder.h */,
 				E62610532460864E00694ABA /* XDXFFmpegVideoDecoder.mm */,
 				E62610542460864E00694ABA /* KSVideoDecoder.m */,
 				E62610552460864E00694ABA /* XDXSortFrameHandler.h */,
-				E62610562460864E00694ABA /* XDXFFmpegVideoDecoder.h */,
 				E62610572460864E00694ABA /* XDXVideoDecoder.mm */,
 				E62610582460864E00694ABA /* KSVideoDecoder.h */,
 				E62610592460864E00694ABA /* XDXVideoDecoder.h */,

@@ -14,12 +14,12 @@
 @interface XDXFFmpegVideoDecoder ()
 {
     /*  FFmpeg  */
-    AVFormatContext          *m_formatContext;
-    AVCodecContext           *m_videoCodecContext;
-    AVFrame                  *m_videoFrame;
-    
-    int     m_videoStreamIndex;
-    BOOL    m_isFindIDR;
+    AVFormatContext *m_formatContext;
+    AVCodecContext *m_videoCodecContext;
+    AVFrame *m_videoFrame;
+
+    int m_videoStreamIndex;
+    BOOL m_isFindIDR;
     int64_t m_base_time;
 }
 
@@ -29,7 +29,9 @@
 
 #pragma mark - C Function
 AVBufferRef *hw_device_ctx = NULL;
-static int InitHardwareDecoder(AVCodecContext *ctx, const enum AVHWDeviceType type) {
+static int InitHardwareDecoder(AVCodecContext *ctx, const enum AVHWDeviceType type)
+{
+    //0 on success, a negative AVERROR code on failure.
     int err = av_hwdevice_ctx_create(&hw_device_ctx, type, NULL, NULL, 0);
     if (err < 0) {
         log4cplus_error("XDXParseParse", "Failed to create specified HW device.\n");
