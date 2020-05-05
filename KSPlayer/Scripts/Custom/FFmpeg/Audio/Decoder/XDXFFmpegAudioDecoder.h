@@ -24,8 +24,6 @@ extern "C" {
 };
 #endif
 
-NS_ASSUME_NONNULL_BEGIN
-
 @protocol XDXFFmpegAudioDecoderDelegate <NSObject>
 
 @optional
@@ -35,12 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XDXFFmpegAudioDecoder : NSObject
 
-@property (weak, nonatomic) id<XDXFFmpegAudioDecoderDelegate> delegate;
+@property (nonatomic, weak) id<XDXFFmpegAudioDecoderDelegate> delegate;
 
 - (instancetype)initWithFormatContext:(AVFormatContext *)formatContext audioStreamIndex:(int)audioStreamIndex;
 - (void)startDecodeAudioDataWithAVPacket:(AVPacket)packet;
 - (void)stopDecoder;
 
 @end
-
-NS_ASSUME_NONNULL_END

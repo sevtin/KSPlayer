@@ -14,14 +14,14 @@
 @interface XDXFFmpegAudioDecoder ()
 {
     /*  FFmpeg  */
-    AVFormatContext          *m_formatContext;
-    AVCodecContext           *m_audioCodecContext;
-    AVFrame                  *m_audioFrame;
-    
-    int     m_audioStreamIndex;
-    BOOL    m_isFindIDR;
+    AVFormatContext *m_formatContext;
+    AVCodecContext *m_audioCodecContext;
+    AVFrame *m_audioFrame;
+
+    int m_audioStreamIndex;
+    BOOL m_isFindIDR;
     int64_t m_base_time;
-    BOOL    m_isFirstFrame;
+    BOOL m_isFirstFrame;
 }
 
 @property (nonatomic, assign) int64_t baseTime;
@@ -52,12 +52,12 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
 #pragma mark - Lifecycle
 - (instancetype)initWithFormatContext:(AVFormatContext *)formatContext audioStreamIndex:(int)audioStreamIndex {
     if (self = [super init]) {
-        m_formatContext     = formatContext;
-        m_audioStreamIndex  = audioStreamIndex;
-        
-        m_isFindIDR      = NO;
-        m_base_time      = 0;
-        m_isFirstFrame   = YES;
+        m_formatContext    = formatContext;
+        m_audioStreamIndex = audioStreamIndex;
+
+        m_isFindIDR        = NO;
+        m_base_time        = 0;
+        m_isFirstFrame     = YES;
         [self initDecoder];
     }
     return self;

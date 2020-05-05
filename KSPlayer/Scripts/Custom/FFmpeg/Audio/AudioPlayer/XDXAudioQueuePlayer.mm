@@ -57,9 +57,9 @@ static void AudioQueuePlayerPropertyListenerProc  (void *              inUserDat
                                                    AudioQueueRef           inAQ,
                                                    AudioQueuePropertyID    inID) {
     XDXAudioQueuePlayer * instance = (__bridge XDXAudioQueuePlayer *)inUserData;
-    UInt32 isRunning = 0;
-    UInt32 size = sizeof(isRunning);
-    
+    UInt32 isRunning               = 0;
+    UInt32 size                    = sizeof(isRunning);
+
     if(instance == NULL)
         return ;
     
@@ -75,7 +75,7 @@ static void AudioQueuePlayerPropertyListenerProc  (void *              inUserDat
 
 #pragma mark - Lifecycle
 + (void)initialize {
-    int size = sizeof(XDXAudioInfo);
+    int size    = sizeof(XDXAudioInfo);
     m_audioInfo = (XDXAudioInfoRef)malloc(size);
 }
 
