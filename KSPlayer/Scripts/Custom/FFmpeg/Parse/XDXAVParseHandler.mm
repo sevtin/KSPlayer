@@ -66,6 +66,7 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         av_register_all();
+        //avformat_network_init();
     });
 }
 
@@ -160,13 +161,25 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
         log4cplus_error(kModuleName, "%s: file path is NULL",__func__);
         return NULL;
     }
-    
     AVFormatContext  *formatContext = NULL;
-    AVDictionary     *opts          = NULL;
-    
-    av_dict_set(&opts, "timeout", "1000000", 0);//设置超时1秒
-    
     formatContext = avformat_alloc_context();
+    //0:成功,负数:失败
+    if (avformat_open_input(&formatContext, [filePath UTF8String], NULL, NULL) < 0) {
+        NSLog(@"打开文件失败");
+        if (formatContext) {
+            avformat_free_context(formatContext);
+        }
+        return NULL;
+    }
+    //>=0:成功
+    if (avformat_find_stream_info(formatContext, NULL) < 0) {
+        NSLog(@"未发现流");
+        avformat_close_input(&formatContext);
+        return NULL;
+    }
+    /*
+    AVDictionary     *opts          = NULL;
+    av_dict_set(&opts, "timeout", "1000000", 0);//设置超时1秒
     BOOL isSuccess = avformat_open_input(&formatContext, [filePath cStringUsingEncoding:NSUTF8StringEncoding], NULL, &opts) < 0 ? NO : YES;
     av_dict_free(&opts);
     if (!isSuccess) {
@@ -180,7 +193,7 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
         avformat_close_input(&formatContext);
         return NULL;
     }
-    
+    */
     return formatContext;
 }
 
