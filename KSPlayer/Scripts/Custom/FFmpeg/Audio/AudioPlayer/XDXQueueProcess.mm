@@ -26,11 +26,11 @@ XDXCustomQueueProcess::XDXCustomQueueProcess() {
     
     for (int i = 0; i < XDXCustomQueueSize; i++) {
         XDXCustomQueueNode *node = (XDXCustomQueueNode *)malloc(sizeof(struct XDXCustomQueueNode));
-        node->data = malloc(kXDXBufferSize);
+        node->data               = malloc(kXDXBufferSize);
         memset(node->data, 0, kXDXBufferSize);
-        node->size = 0;
-        node->index= 0;
-        node->userData = NULL;
+        node->size               = 0;
+        node->index              = 0;
+        node->userData           = NULL;
         this->EnQueue(m_free_queue, node);
     }
     
