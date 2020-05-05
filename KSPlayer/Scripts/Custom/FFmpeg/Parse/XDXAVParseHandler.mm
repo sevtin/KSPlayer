@@ -29,8 +29,7 @@ static const int kXDXParseSupportMaxHeight  = 2160;
     /*  FFmpeg  */
     AVFormatContext          *m_formatContext;
     AVBitStreamFilterContext *m_bitFilterContext;
-//    AVBSFContext             *m_bsfContext;
-    
+
     int m_videoStreamIndex;
     int m_audioStreamIndex;
     
@@ -161,8 +160,8 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
         log4cplus_error(kModuleName, "%s: file path is NULL",__func__);
         return NULL;
     }
-    AVFormatContext  *formatContext = NULL;
-    formatContext = avformat_alloc_context();
+    AVFormatContext *formatContext = NULL;
+    //formatContext = avformat_alloc_context();
     //0:成功,负数:失败
     if (avformat_open_input(&formatContext, [filePath UTF8String], NULL, NULL) < 0) {
         NSLog(@"打开文件失败");
@@ -201,7 +200,7 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
     int avStreamIndex = -1;
     for (int i = 0; i < formatContext->nb_streams; i++) {
         if ((isVideoStream ? AVMEDIA_TYPE_VIDEO : AVMEDIA_TYPE_AUDIO) == formatContext->streams[i]->codecpar->codec_type) {
-            avStreamIndex = i;
+            avStreamIndex = i;//为什么没有break;
         }
     }
     
@@ -300,7 +299,6 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
             log4cplus_error(kModuleName, "%s: Only support AAC format for the demo.",__func__);
             return NO;
         }
-        
         return YES;
     }else {
         return NO;
@@ -313,13 +311,13 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
     
     dispatch_queue_t parseQueue = dispatch_queue_create("parse_queue", DISPATCH_QUEUE_SERIAL);
     dispatch_async(parseQueue, ^{
-        int fps = GetAVStreamFPSTimeBase(formatContext->streams[videoStreamIndex]);
-        
+        int fps                   = GetAVStreamFPSTimeBase(formatContext->streams[videoStreamIndex]);
+
         AVPacket    packet;
         AVRational  input_base;
-        input_base.num = 1;
-        input_base.den = 1000;
-        
+        input_base.num            = 1;
+        input_base.den            = 1000;
+
         Float64 current_timestamp = [self getCurrentTimestamp];
         while (!self->m_isStopParse) {
             av_init_packet(&packet);
@@ -358,15 +356,15 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
                     }
                 }
                 
-                if (videoInfo.videoRotate != 0 /* &&  <= iPhone 8*/) {
+                if (videoInfo.videoRotate != 0) {
                     log4cplus_error(kModuleName, "%s: Not support the angle",__func__);
                     break;
                 }
                 
-                int video_size = packet.size;
+                int video_size      = packet.size;
                 uint8_t *video_data = (uint8_t *)malloc(video_size);
                 memcpy(video_data, packet.data, video_size);
-                
+
                 static char filter_name[32];
                 if (formatContext->streams[videoStreamIndex]->codecpar->codec_id == AV_CODEC_ID_H264) {
                     strncpy(filter_name, "h264_mp4toannexb", 32);
@@ -424,24 +422,21 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
             
             if (packet.stream_index == audioStreamIndex) {
                 XDXParseAudioDataInfo audioInfo = {0};
-                audioInfo.data = (uint8_t *)malloc(packet.size);
+                audioInfo.data                  = (uint8_t *)malloc(packet.size);
                 memcpy(audioInfo.data, packet.data, packet.size);
-                audioInfo.dataSize = packet.size;
-                audioInfo.channel = formatContext->streams[audioStreamIndex]->codecpar->channels;
-                audioInfo.sampleRate = formatContext->streams[audioStreamIndex]->codecpar->sample_rate;
-                audioInfo.pts = packet.pts * av_q2d(formatContext->streams[audioStreamIndex]->time_base);
-                
+                audioInfo.dataSize              = packet.size;
+                audioInfo.channel               = formatContext->streams[audioStreamIndex]->codecpar->channels;
+                audioInfo.sampleRate            = formatContext->streams[audioStreamIndex]->codecpar->sample_rate;
+                audioInfo.pts                   = packet.pts * av_q2d(formatContext->streams[audioStreamIndex]->time_base);
+
                 // send audio info
                 if (handler) {
                     handler(NO, NO, NULL, &audioInfo);
                 }
-                
                 free(audioInfo.data);
             }
-            
             av_packet_unref(&packet);
         }
-        
         [self freeAllResources];
     });
 }
@@ -469,15 +464,14 @@ static int GetAVStreamFPSTimeBase(AVStream *st) {
             }else {
                 handler(NO, NO, packet);
             }
-            
             av_packet_unref(&packet);
         }
-        
         [self freeAllResources];
     });
 }
 
 
+/// 释放所有资源
 - (void)freeAllResources {
     log4cplus_error(kModuleName, "%s: Free all resources !",__func__);
     if (m_formatContext) {

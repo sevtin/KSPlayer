@@ -38,19 +38,21 @@ int kXDXBufferSize = 4096;
     [self initializeKit];
     [self initializeArgs];
     
-    //[self initializeAudio];
     [self startDecodeByFFmpegWithIsH265Data:self.isH265File];
 }
 
 - (void)initializeKit {
     XDXPreviewView *previewView = [[XDXPreviewView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:previewView];
-    _previewView = previewView;
+    _previewView                = previewView;
 }
 
 - (void)initializeArgs {
-    self.isH265File = NO;
-    self.sortHandler = [[XDXSortFrameHandler alloc] init];
+    // Set it to select decode method
+    self.isUseFFmpeg          = YES;
+    
+    self.isH265File           = NO;
+    self.sortHandler          = [[XDXSortFrameHandler alloc] init];
     self.sortHandler.delegate = self;
 }
 
@@ -78,10 +80,7 @@ int kXDXBufferSize = 4096;
         .mBytesPerFrame      = 2,
         .mFramesPerPacket    = 1,
     };
-    
-    // Set it to select decode method
-    self.isUseFFmpeg = YES;
-    
+
     // Configure Audio Queue Player
     [[XDXAudioQueuePlayer getInstance] configureAudioPlayerWithAudioFormat:self.isUseFFmpeg ? &ffmpegAudioFormat : &systemAudioFormat bufferSize:kXDXBufferSize];
     [[XDXAudioQueuePlayer getInstance] startAudioPlayer];
@@ -188,7 +187,7 @@ int kXDXBufferSize = 4096;
     }];
 }
 
-#pragma mark - Decode Callback
+#pragma mark - XDXFFmpegAudioDecoderDelegate
 - (void)getDecodeAudioDataByFFmpeg:(void *)data size:(int)size pts:(int64_t)pts isFirstFrame:(BOOL)isFirstFrame {
     // Put audio data from audio file into audio data queue
     [self addBufferToWorkQueueWithAudioData:data size:size];
@@ -197,10 +196,8 @@ int kXDXBufferSize = 4096;
     usleep(16.8*1000);
 }
 
-
-- (void)addBufferToWorkQueueWithAudioData:(void *)data  size:(int)size {
-    XDXCustomQueueProcess *audioBufferQueue =  [XDXAudioQueuePlayer getInstance]->_audioBufferQueue;
-    
+- (void)addBufferToWorkQueueWithAudioData:(void *)data size:(int)size {
+    XDXCustomQueueProcess *audioBufferQueue = [XDXAudioQueuePlayer getInstance]->_audioBufferQueue;
     XDXCustomQueueNode *node = audioBufferQueue->DeQueue(audioBufferQueue->m_free_queue);
     if (node == NULL) {
         NSLog(@"XDXCustomQueueProcess addBufferToWorkQueueWithSampleBuffer : Data in , the node is NULL !");

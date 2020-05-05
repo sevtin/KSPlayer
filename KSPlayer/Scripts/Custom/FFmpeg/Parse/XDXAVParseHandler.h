@@ -24,9 +24,7 @@ extern "C" {
 };
 #endif
 
-NS_ASSUME_NONNULL_BEGIN
-
-typedef enum : NSUInteger {
+typedef enum: NSUInteger {
     XDXH264EncodeFormat,
     XDXH265EncodeFormat,
 } XDXVideoEncodeFormat;
@@ -54,7 +52,6 @@ struct XDXParseAudioDataInfo {
 
 @interface XDXAVParseHandler : NSObject
 
-
 /**
  Init Parse Handler by file path
 
@@ -62,7 +59,6 @@ struct XDXParseAudioDataInfo {
  @return the object instance
  */
 - (instancetype)initWithPath:(NSString *)path;
-
 
 /**
  Start parse file content
@@ -75,7 +71,6 @@ struct XDXParseAudioDataInfo {
 - (void)startParseWithCompletionHandler:(void (^)(BOOL isVideoFrame, BOOL isFinish, struct XDXParseVideoDataInfo *videoInfo, struct XDXParseAudioDataInfo *audioInfo))handler;
 - (void)startParseGetAVPackeWithCompletionHandler:(void (^)(BOOL isVideoFrame, BOOL isFinish, AVPacket packet))handler;
 
-
 /**
  Get Method
  */
@@ -84,5 +79,3 @@ struct XDXParseAudioDataInfo {
 - (int)getAudioStreamIndex;
 
 @end
-
-NS_ASSUME_NONNULL_END

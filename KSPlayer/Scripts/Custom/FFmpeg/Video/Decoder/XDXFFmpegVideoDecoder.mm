@@ -60,12 +60,12 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
 #pragma mark - Lifecycle
 - (instancetype)initWithFormatContext:(AVFormatContext *)formatContext videoStreamIndex:(int)videoStreamIndex {
     if (self = [super init]) {
-        m_formatContext     = formatContext;
-        m_videoStreamIndex  = videoStreamIndex;
-        
-        m_isFindIDR = NO;
-        m_base_time = 0;
-        
+        m_formatContext    = formatContext;
+        m_videoStreamIndex = videoStreamIndex;
+
+        m_isFindIDR        = NO;
+        m_base_time        = 0;
+
         [self initDecoder];
     }
     return self;
@@ -175,7 +175,6 @@ static int DecodeGetAVStreamFPSTimeBase(AVStream *st) {
             if ([self.delegate respondsToSelector:@selector(getDecodeVideoDataByFFmpeg:)]) {
                 [self.delegate getDecodeVideoDataByFFmpeg:sampleBufferRef];
             }
-            
             CFRelease(sampleBufferRef);
         }
     }
