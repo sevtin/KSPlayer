@@ -7,48 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "315C39E4-E41C-4C63-9E7C-4659FD10F5F6"
+            uuid = "DCE7AD6B-630E-4E0E-958D-D836CC7F0923"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KSPlayer/Scripts/Library/KSPlayer/Thread/KSThread.m"
+            filePath = "KSPlayer/Scripts/Library/KSPlayer/Thread/KSDemuxThread.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-close"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "633F4AFC-0361-44FB-AD29-A5BD7195113F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KSPlayer/Scripts/Library/KSPlayer/Thread/KSThread.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-pop"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9AE0B09E-CB33-45C8-A150-3FBA47A3325B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KSPlayer/Scripts/Library/KSPlayer/Thread/KSThread.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-pop"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-run"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

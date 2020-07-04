@@ -25,27 +25,28 @@
     if (!pkt) {
         return false;
     }
-    
-    AVPacketList *pkt1;
     //引用计数+1
     if(av_dup_packet(pkt) < 0) {
         return false;
     }
-
+    
     //分配空间
-    pkt1 = av_malloc(sizeof(AVPacketList));
-    if (!pkt1)
+    AVPacketList *pkt1 = av_malloc(sizeof(AVPacketList));
+    if (!pkt1){
         return false;
+    }
     pkt1->pkt = *pkt;
     pkt1->next = NULL;
     
     //互斥锁
     [self mutexLock];
     
-    if (!packet_queue.last_pkt)
+    if (!packet_queue.last_pkt){
         packet_queue.first_pkt = pkt1;//如果是空队列
-    else
+    }
+    else{
         packet_queue.last_pkt->next = pkt1;//设成最后一个包的下一个元素
+    }
     
     //移动指针，最后一个元素指向pkt1
     packet_queue.last_pkt = pkt1;
@@ -63,7 +64,6 @@
 - (AVPacket *)pop {
     AVPacketList *pktl = NULL;
     AVPacket *pkt = NULL;
-
     //获取队列头
     pktl = packet_queue.first_pkt;
     if (pktl) {
