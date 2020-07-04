@@ -6,9 +6,9 @@
 //  Copyright © 2020 saeipi. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "KSProcess.h"
 #import "avformat.h"
-
+#import "KSDecode.h"
 typedef struct KSPacketQueue {
     //队列头，队列尾
     AVPacketList *first_pkt, *last_pkt;
@@ -18,15 +18,18 @@ typedef struct KSPacketQueue {
     int size;
 } KSPacketQueue;
 
-@interface KSThread : NSObject {
-    pthread_mutex_t lock;
+@interface KSThread : KSProcess {
     NSThread *thread;
-    BOOL isExit;
     KSPacketQueue packet_queue;
+    KSDecode *decode;
 }
 
-- (void)mutexLock;
-- (void)mutexUnlock;
-- (void)msleep:(int)ms;
+@property(nonatomic,assign) long long pts;
+@property(nonatomic,assign) long long total_ms;
+
+- (BOOL)push:(AVPacket *)pkt;
+- (AVPacket *)pop;
+- (void)close;
+- (void)clear;
 
 @end

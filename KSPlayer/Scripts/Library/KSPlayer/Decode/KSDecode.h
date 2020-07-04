@@ -6,15 +6,13 @@
 //  Copyright © 2020 saeipi. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "KSProcess.h"
 #include<libavcodec/avcodec.h>
 
-@interface KSDecode : NSObject{
-    pthread_mutex_t lock;
-    BOOL isExit;
-    //当前解码到的pts
-    long long pts;
-}
+@interface KSDecode : KSProcess
+
+//当前解码到的pts
+@property(nonatomic,assign) long long pts;
 
 + (void)freePacket:(AVPacket **)pkt;
 + (void)freeFrame:(AVFrame **)frame;

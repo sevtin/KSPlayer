@@ -12,33 +12,15 @@
 #import "avformat.h"
 #import "KSDecode.h"
 
-@interface KSThread() {
-    KSDecode *decode;
-}
-
-@end
 @implementation KSThread
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        pthread_mutex_init(&lock, NULL);
+        
     }
     return self;
 }
-
-- (void)mutexLock {
-    pthread_mutex_lock(&lock);
-}
-
-- (void)mutexUnlock {
-    pthread_mutex_unlock(&lock);
-}
-
-- (void)msleep:(int)ms {
-    usleep(ms);
-}
-
 - (BOOL)push:(AVPacket *)pkt {
     if (!pkt) {
         return false;
@@ -77,16 +59,7 @@
     return true;
 }
 
-- (AVPacket *)safetyPop:(KSPacketQueue)queue {
-    AVPacket *pkt = NULL;
-    //互斥锁
-    [self mutexLock];
-    pkt = [self pop];
-    //解锁
-    [self mutexUnlock];
-    return pkt;
-}
-
+//访问加锁
 - (AVPacket *)pop {
     AVPacketList *pktl = NULL;
     AVPacket *pkt = NULL;

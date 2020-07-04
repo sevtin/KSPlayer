@@ -52,6 +52,9 @@
 		E6D82A2D24B0540100841375 /* KSVideoThread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A2C24B0540100841375 /* KSVideoThread.m */; };
 		E6D82A3024B0542E00841375 /* KSThread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A2F24B0542E00841375 /* KSThread.m */; };
 		E6D82A3324B063FF00841375 /* KSDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A3224B063FF00841375 /* KSDecode.m */; };
+		E6D82A3624B0752B00841375 /* KSDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A3524B0752B00841375 /* KSDemux.m */; };
+		E6D82A4F24B07EED00841375 /* KSProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A4E24B07EED00841375 /* KSProcess.m */; };
+		E6D82A5E24B093C600841375 /* KSConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A5D24B093C600841375 /* KSConst.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +244,12 @@
 		E6D82A2F24B0542E00841375 /* KSThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSThread.m; sourceTree = "<group>"; };
 		E6D82A3124B063FF00841375 /* KSDecode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSDecode.h; sourceTree = "<group>"; };
 		E6D82A3224B063FF00841375 /* KSDecode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSDecode.m; sourceTree = "<group>"; };
+		E6D82A3424B0752B00841375 /* KSDemux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSDemux.h; sourceTree = "<group>"; };
+		E6D82A3524B0752B00841375 /* KSDemux.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSDemux.m; sourceTree = "<group>"; };
+		E6D82A4D24B07EED00841375 /* KSProcess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSProcess.h; sourceTree = "<group>"; };
+		E6D82A4E24B07EED00841375 /* KSProcess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSProcess.m; sourceTree = "<group>"; };
+		E6D82A5C24B093C600841375 /* KSConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSConst.h; sourceTree = "<group>"; };
+		E6D82A5D24B093C600841375 /* KSConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSConst.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -815,6 +824,7 @@
 		E6D82A2124B0535200841375 /* KSPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				E6D82A5A24B0931B00841375 /* Util */,
 				E6D82A2424B053C600841375 /* Widget */,
 				E6D82A2324B053BB00841375 /* Thread */,
 				E6D82A2224B053B100841375 /* Decode */,
@@ -827,6 +837,10 @@
 			children = (
 				E6D82A3124B063FF00841375 /* KSDecode.h */,
 				E6D82A3224B063FF00841375 /* KSDecode.m */,
+				E6D82A3424B0752B00841375 /* KSDemux.h */,
+				E6D82A3524B0752B00841375 /* KSDemux.m */,
+				E6D82A4D24B07EED00841375 /* KSProcess.h */,
+				E6D82A4E24B07EED00841375 /* KSProcess.m */,
 			);
 			path = Decode;
 			sourceTree = "<group>";
@@ -851,6 +865,15 @@
 			children = (
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		E6D82A5A24B0931B00841375 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E6D82A5C24B093C600841375 /* KSConst.h */,
+				E6D82A5D24B093C600841375 /* KSConst.m */,
+			);
+			path = "\U0016Util";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -947,7 +970,10 @@
 				E6921A5424614CAD0099209B /* XDXAduioDecoder.m in Sources */,
 				E6260F23246080F300694ABA /* g711.c in Sources */,
 				E6921A7A246168780099209B /* KSAudioPlayerController.mm in Sources */,
+				E6D82A4F24B07EED00841375 /* KSProcess.m in Sources */,
 				E6D82A2724B053EA00841375 /* KSDemuxThread.m in Sources */,
+				E6D82A3624B0752B00841375 /* KSDemux.m in Sources */,
+				E6D82A5E24B093C600841375 /* KSConst.m in Sources */,
 				E6921A74246168390099209B /* KSMainCell.m in Sources */,
 				E6D82A3024B0542E00841375 /* KSThread.m in Sources */,
 			);

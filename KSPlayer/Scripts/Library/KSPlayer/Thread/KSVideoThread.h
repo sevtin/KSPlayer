@@ -11,13 +11,16 @@
 
 @protocol KSVideoThreadDelegate <NSObject>
 
--(void)videoThread:(KSVideoThread *)thread width:(int)width height:(int)height;
+@required
 -(void)videoThread:(KSVideoThread *)thread frame:(AVFrame *)frame;
 
 @end
 
 @interface KSVideoThread : KSThread
-
 @property(nonatomic,weak)id<KSVideoThreadDelegate> delegate;
-
+//同步时间，由外部传入
+@property(nonatomic,assign) long long syn_pts;
+//打开，不管成功与否都清理
+-(BOOL)open:(AVCodecParameters *)par;
+- (void)run;
 @end

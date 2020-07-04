@@ -43,7 +43,7 @@
         avcodec_close(codec);
         avcodec_free_context(&codec);
     }
-    pts = 0;
+    _pts = 0;
     [self mutexUnlock];
 }
 
@@ -123,7 +123,7 @@
         av_frame_free(&frame);
         return NULL;
     }
-    pts = frame->pts;
+    _pts = frame->pts;
     return frame;
 }
 

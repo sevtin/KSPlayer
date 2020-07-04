@@ -10,8 +10,10 @@
 #import "KSMediaPlayerController.h"
 #import "KSAudioPlayerController.h"
 #import "KSMainCell.h"
-@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "KSDemuxThread.h"
 
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate,KSDemuxThreadDelegate>
+@property(nonatomic,strong)KSDemuxThread *demuxThread;
 @end
 
 @implementation ViewController
@@ -47,6 +49,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    _demuxThread = [[KSDemuxThread alloc] init];
+    _demuxThread.delegate = self;
+    char *url = "http://www.w3school.com.cn/i/movie.mp4";
+    [_demuxThread open:url];
+    
+    /*
     UIViewController *ctrl;
     switch (indexPath.row) {
         case 0:
@@ -64,7 +73,13 @@
     }
     if (ctrl) {
         [self.navigationController pushViewController:ctrl animated:NO];
-    }
+    }*/
 }
 
+-(void)videoThread:(KSDemuxThread *)thread width:(int)width height:(int)height {
+    
+}
+-(void)videoThread:(KSDemuxThread *)thread frame:(AVFrame *)frame {
+    
+}
 @end

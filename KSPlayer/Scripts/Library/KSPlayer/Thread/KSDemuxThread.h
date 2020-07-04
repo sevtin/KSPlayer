@@ -7,7 +7,18 @@
 //
 
 #import "KSThread.h"
+@class KSDemuxThread;
+@protocol KSDemuxThreadDelegate <NSObject>
 
+@required
+-(void)videoThread:(KSDemuxThread *)thread width:(int)width height:(int)height;
+-(void)videoThread:(KSDemuxThread *)thread frame:(AVFrame *)frame;
+
+@end
 @interface KSDemuxThread : KSThread
+
+@property(nonatomic,weak)id<KSDemuxThreadDelegate> delegate;
+
+- (void)open:(const char *)url;
 
 @end
