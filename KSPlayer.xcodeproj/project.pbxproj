@@ -47,6 +47,11 @@
 		E6921A7A246168780099209B /* KSAudioPlayerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A78246168780099209B /* KSAudioPlayerController.mm */; };
 		E6921A7D246168910099209B /* KSMediaPlayerController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E6921A7B246168910099209B /* KSMediaPlayerController.mm */; };
 		E6921A80246168AC0099209B /* KSVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6921A7F246168AC0099209B /* KSVideoPlayerController.m */; };
+		E6D82A2724B053EA00841375 /* KSDemuxThread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A2624B053EA00841375 /* KSDemuxThread.m */; };
+		E6D82A2A24B053F600841375 /* KSAudioThread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A2924B053F600841375 /* KSAudioThread.m */; };
+		E6D82A2D24B0540100841375 /* KSVideoThread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A2C24B0540100841375 /* KSVideoThread.m */; };
+		E6D82A3024B0542E00841375 /* KSThread.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A2F24B0542E00841375 /* KSThread.m */; };
+		E6D82A3324B063FF00841375 /* KSDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D82A3224B063FF00841375 /* KSDecode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,6 +231,16 @@
 		E6921A7C246168910099209B /* KSMediaPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSMediaPlayerController.h; sourceTree = "<group>"; };
 		E6921A7E246168AC0099209B /* KSVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSVideoPlayerController.h; sourceTree = "<group>"; };
 		E6921A7F246168AC0099209B /* KSVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSVideoPlayerController.m; sourceTree = "<group>"; };
+		E6D82A2524B053EA00841375 /* KSDemuxThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSDemuxThread.h; sourceTree = "<group>"; };
+		E6D82A2624B053EA00841375 /* KSDemuxThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSDemuxThread.m; sourceTree = "<group>"; };
+		E6D82A2824B053F600841375 /* KSAudioThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSAudioThread.h; sourceTree = "<group>"; };
+		E6D82A2924B053F600841375 /* KSAudioThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSAudioThread.m; sourceTree = "<group>"; };
+		E6D82A2B24B0540100841375 /* KSVideoThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSVideoThread.h; sourceTree = "<group>"; };
+		E6D82A2C24B0540100841375 /* KSVideoThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSVideoThread.m; sourceTree = "<group>"; };
+		E6D82A2E24B0542E00841375 /* KSThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSThread.h; sourceTree = "<group>"; };
+		E6D82A2F24B0542E00841375 /* KSThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSThread.m; sourceTree = "<group>"; };
+		E6D82A3124B063FF00841375 /* KSDecode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSDecode.h; sourceTree = "<group>"; };
+		E6D82A3224B063FF00841375 /* KSDecode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KSDecode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +321,7 @@
 		E6260F132460804F00694ABA /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E6D82A2124B0535200841375 /* KSPlayer */,
 				E6260FC5246085F900694ABA /* FFmpeg-iOS */,
 				E6260F19246080F300694ABA /* fat-x264 */,
 				E6260F1F246080F300694ABA /* G711 */,
@@ -796,6 +812,47 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E6D82A2124B0535200841375 /* KSPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E6D82A2424B053C600841375 /* Widget */,
+				E6D82A2324B053BB00841375 /* Thread */,
+				E6D82A2224B053B100841375 /* Decode */,
+			);
+			path = KSPlayer;
+			sourceTree = "<group>";
+		};
+		E6D82A2224B053B100841375 /* Decode */ = {
+			isa = PBXGroup;
+			children = (
+				E6D82A3124B063FF00841375 /* KSDecode.h */,
+				E6D82A3224B063FF00841375 /* KSDecode.m */,
+			);
+			path = Decode;
+			sourceTree = "<group>";
+		};
+		E6D82A2324B053BB00841375 /* Thread */ = {
+			isa = PBXGroup;
+			children = (
+				E6D82A2524B053EA00841375 /* KSDemuxThread.h */,
+				E6D82A2624B053EA00841375 /* KSDemuxThread.m */,
+				E6D82A2824B053F600841375 /* KSAudioThread.h */,
+				E6D82A2924B053F600841375 /* KSAudioThread.m */,
+				E6D82A2B24B0540100841375 /* KSVideoThread.h */,
+				E6D82A2C24B0540100841375 /* KSVideoThread.m */,
+				E6D82A2E24B0542E00841375 /* KSThread.h */,
+				E6D82A2F24B0542E00841375 /* KSThread.m */,
+			);
+			path = Thread;
+			sourceTree = "<group>";
+		};
+		E6D82A2424B053C600841375 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -872,6 +929,7 @@
 			files = (
 				E609F44924607E9B0047A1F8 /* ViewController.m in Sources */,
 				E6921A80246168AC0099209B /* KSVideoPlayerController.m in Sources */,
+				E6D82A2A24B053F600841375 /* KSAudioThread.m in Sources */,
 				E609F45424607E9C0047A1F8 /* main.m in Sources */,
 				E626105E2460864E00694ABA /* XDXAVParseHandler.mm in Sources */,
 				E62610612460864E00694ABA /* XDXVideoDecoder.mm in Sources */,
@@ -879,15 +937,19 @@
 				E6921A5324614CAD0099209B /* XDXFFmpegAudioDecoder.mm in Sources */,
 				E6921A65246153740099209B /* XDXAudioQueuePlayer.mm in Sources */,
 				E62610632460864E00694ABA /* XDXPreviewView.mm in Sources */,
+				E6D82A2D24B0540100841375 /* KSVideoThread.m in Sources */,
 				E6921A66246153740099209B /* XDXQueueProcess.mm in Sources */,
 				E609F44624607E9B0047A1F8 /* AppDelegate.m in Sources */,
 				E626105F2460864E00694ABA /* XDXFFmpegVideoDecoder.mm in Sources */,
 				E6921A77246168620099209B /* KSBaseController.m in Sources */,
 				E6921A7D246168910099209B /* KSMediaPlayerController.mm in Sources */,
+				E6D82A3324B063FF00841375 /* KSDecode.m in Sources */,
 				E6921A5424614CAD0099209B /* XDXAduioDecoder.m in Sources */,
 				E6260F23246080F300694ABA /* g711.c in Sources */,
 				E6921A7A246168780099209B /* KSAudioPlayerController.mm in Sources */,
+				E6D82A2724B053EA00841375 /* KSDemuxThread.m in Sources */,
 				E6921A74246168390099209B /* KSMainCell.m in Sources */,
+				E6D82A3024B0542E00841375 /* KSThread.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
