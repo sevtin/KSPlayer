@@ -68,7 +68,7 @@
         while (!isExit) {
             AVFrame *frame = [decode receive];
             //显示视频
-            if (!frame) {
+            if (frame) {
                 [self.delegate videoThread:self frame:frame];
             }
         }
