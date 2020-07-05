@@ -14,13 +14,6 @@
 
 @implementation KSThread
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
 - (BOOL)push:(AVPacket *)pkt {
     if (!pkt) {
         return false;
@@ -38,9 +31,6 @@
     pkt1->pkt = *pkt;
     pkt1->next = NULL;
     
-    //互斥锁
-    [self mutexLock];
-    
     if (!packet_queue.last_pkt){
         packet_queue.first_pkt = pkt1;//如果是空队列
     }
@@ -55,13 +45,12 @@
     //统计每一个包的size，求和
     packet_queue.size += pkt1->pkt.size;
     
-    //解锁
-    [self mutexUnlock];
     return true;
 }
 
 //访问加锁
 - (AVPacket *)pop {
+    
     AVPacketList *pktl = NULL;
     AVPacket *pkt = av_malloc(sizeof(AVPacket));
     //获取队列头
@@ -81,7 +70,6 @@
         //释放分配的内存
         av_free(pktl);
     }
-    
     return pkt;
 }
 

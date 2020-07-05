@@ -19,13 +19,13 @@ typedef struct KSPacketQueue {
 } KSPacketQueue;
 
 @interface KSThread : KSProcess {
-    NSThread *thread;
     KSPacketQueue packet_queue;
     KSDecode *decode;
 }
 
 @property(nonatomic,assign) long long pts;
 @property(nonatomic,assign) long long total_ms;
+
 
 - (BOOL)push:(AVPacket *)pkt;
 - (AVPacket *)pop;
