@@ -12,17 +12,10 @@
 @interface KSDecode() {
     AVCodecContext *codec;
 }
-
 @end
+
 @implementation KSDecode
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        pthread_mutex_init(&lock, NULL);
-        codec = NULL;
-    }
-    return self;
-}
+
 + (void)freePacket:(AVPacket **)pkt {
     if (!pkt || !(*pkt)) {
         return;
@@ -69,8 +62,13 @@
         return false;
     }
     [self mutexLock];
+    _pts = 0;
+    codec = NULL;
     codec = avcodec_alloc_context3(video_codec);
-    
+    if (!codec) {
+        [self mutexUnlock];
+        return false;
+    }
     //配置解码器上下文参数
     avcodec_parameters_to_context(codec, par);
     avcodec_parameters_free(&par);
@@ -103,7 +101,9 @@
     int ret = avcodec_send_packet(codec, pkt);
     [self mutexUnlock];
     av_packet_free(&pkt);
-    if (ret != 0){return false;}
+    if (ret != 0){
+        return false;
+    }
     return true;
 }
 
@@ -127,14 +127,6 @@
     }
     _pts = frame->pts;
     return frame;
-}
-
-- (void)mutexLock {
-    pthread_mutex_lock(&lock);
-}
-
-- (void)mutexUnlock {
-    pthread_mutex_unlock(&lock);
 }
 
 @end

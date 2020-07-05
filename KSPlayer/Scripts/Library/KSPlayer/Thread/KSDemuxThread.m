@@ -30,8 +30,10 @@
             av_register_all();
             avformat_network_init();
         });
-        [self initDemux:url];
-        [self start];
+        
+        if ([self initDemux:url]) {
+            [self start];
+        };
     });
 }
 
@@ -61,7 +63,7 @@
 
 - (void)run {
     while (!isExit) {
-        printf("|----------------|");
+        printf("|----------------|\n");
         [self mutexLock];
         if (isPause) {
             [self mutexUnlock];

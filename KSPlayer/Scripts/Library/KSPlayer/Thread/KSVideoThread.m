@@ -58,6 +58,7 @@
             usleep(KS_Const_USleep_Sync);
             continue;
         }
+        
         AVPacket *pkt = [self pop];
         BOOL ret = [decode send:pkt];
         if (!ret) {
@@ -70,6 +71,8 @@
             //显示视频
             if (frame) {
                 [self.delegate videoThread:self frame:frame];
+            }else{
+                break;
             }
         }
         

@@ -63,7 +63,7 @@
 //访问加锁
 - (AVPacket *)pop {
     AVPacketList *pktl = NULL;
-    AVPacket *pkt = NULL;
+    AVPacket *pkt = av_malloc(sizeof(AVPacket));
     //获取队列头
     pktl = packet_queue.first_pkt;
     if (pktl) {
