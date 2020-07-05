@@ -92,7 +92,9 @@
 //发送到解码线程，不管成功与否都释放pkt空间（对象和媒体内容）
 - (BOOL)send:(AVPacket *)pkt {
     //容错处理
-    if (!pkt || pkt->size <= 0 || !pkt->data){return false;}
+    if (!pkt || pkt->size <= 0 || !pkt->data){
+        return false;
+    }
     [self mutexLock];
     if (!codec) {
         [self mutexUnlock];
